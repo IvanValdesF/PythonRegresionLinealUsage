@@ -12,14 +12,14 @@ class Ecuacion:
     
     def __init__(self,window):
         self.wind = window
-        self.wind.title('Aplicacion para aser trampa')
+        self.wind.title('Aplicacion de regresion lineal')
         self.x = np.array([1,2,3,4,5,6,7,8],dtype=float)
         self.y = np.array([58,67,79,93,107,122,138,155],dtype=float)
         self.formula=''
         
         
         #crear frame
-        frame = LabelFrame(self.wind, text="Ingresa los valores de x pa")
+        frame = LabelFrame(self.wind, text="Ingresa los valores de X")
         frame.pack()
         #inputx
         Label(frame,text="ValorX: ").pack()
@@ -116,7 +116,7 @@ class Ecuacion:
             query = "INSERT INTO datos (X,Y,XY,X2,Y2) VALUES(?, ?, ?, ?, ?)"
             parameters = (self.xval.get(),self.yval.get(),float(self.xval.get()) * float(self.yval.get()),float(self.xval.get())**2,float(self.yval.get())**2)
             self.mQuery(query,parameters)
-            print('datosguardados')
+            print('Datos guardados')
             
             
             self.getDatos()
@@ -140,7 +140,7 @@ class Ecuacion:
            optimizer=tf.keras.optimizers.Adam(0.1),
            loss='mean_squared_error'
         )
-        print("empueza entrenamiento d modelo")
+        print("Empieza entrenamiento de modelo")
         historial = self.modelo.fit(npx,npy,epochs=10000,verbose=False)
         predict = self.modelo.predict([9])
         print("La prediccion es: " + str(predict[0][0]))
